@@ -1,0 +1,43 @@
+Surly robot makes your decisions for you, curing your indecision. Answers in ALL CAPS and calls you MEATBAG, FLESH GOLEM, JUICE SACK.
+
+Simple website with a single text box where you can ask your question then get an answer. Picture of robot to the right, silhouette of human to the left, css speech bubbles leading from them.
+Human question in one font, robot answer in another (and all caps).
+Text box shows grey example question, use http://stackoverflow.com/questions/ask for inspiration.
+Questions asked via this method are private (no ssl, but also no public broadcast).
+People can link to questions ( e.g. decisiverobot.com/coffee%20or%20%tea? ). Add tweet and facebook buttons.
+
+Also implement a twitter bot that does the same thing when people @decisiverobot it. Also manually go around the twitters (and facebook?) looking for questions to answer to drum up publicity.
+
+Handling questions:
+Main focus choosing between different options:
+	Q - Should I eat in or get takeaway? A - (EAT IN|GET TAKEAWAY) (MEATBAG|HUMAN)
+	
+But also support yes / no questions:
+	Q - Should I go to the gym? A - (YES|NO|OF COURSE|OF COURSE NOT) (MEATBAG|HUMAN)
+	
+For choice questions, start by only supporting choices commas, "or" and questions marks, e.g. "tofu, tempeh or milk?" not "Should I eat tofu, tempeh or milk?". Add complexity by filtering out "Should I" type stuff later.
+	
+Further examples (slurs ommitted):
+	Q - Should I go to the movies, dance, or buy a pony? A - (GO TO THE MOVIES|DANCE|BUY A PONY)
+	Q - go to the movies, dance, or buy a pony? A - (GO TO THE MOVIES|DANCE|BUY A PONY)
+	Q - Do you like scary movies? A - (YES|NO|OF COURSE|OF COURSE NOT)
+	Q - What's better, tofu or tempeh? A - (TOFU|TEMPEH)
+	Q - What is better, tofu or tempeh? A - (TOFU|TEMPEH)
+	Q - Which is better, tofu or tempeh? A - (TOFU|TEMPEH)
+	Q - Which should I eat, tofu or tempeh? A - (TOFU|TEMPEH)
+	Q - Which shall I eat, tofu or tempeh? A - (TOFU|TEMPEH)
+	Q - Which shall we eat, tofu or tempeh? A - (TOFU|TEMPEH)
+	Q - Which shall dan throw, tofu or tempeh? A - (TOFU|TEMPEH)
+	Q - What should I do, pay a game, go for a walk or do some work? A - (PLAY A GAME|GO FOR A WALK|DO SOME WORK)
+	Q - Which should I watch, rambo, rocky or clerks? A - (RAMBO|ROCKY|CLERKS)
+	Q - A or B or C or D? A - (A|B|C|D)
+	Q - A or B, C or D? A - (A|B|C|D)
+	Q - A or B, C or D? A - (A|B|C|D)
+	Q - A or B or C or D????? A - (A|B|C|D)
+	Q - Do I dare to eat a peach or shall I murder a melon, for fun? A - (EAT A PEACH|MURDER A MELON)
+	
+Use the logs of people's questions to fine tune.
+
+Don't forget to pylint, check for html and css spec compliancy.
+Use pyjamas? google js optimizer? Coffeescript?
+Google analytics, adsense.
