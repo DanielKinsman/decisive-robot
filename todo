@@ -1,0 +1,24 @@
+get flask web.py working
+unit tests for decisiverobot.py
+makefile for pyjsbuild
+virtualenv
+create production branch/tag add generated html to it
+test locally via foreman
+deploy to heroku
+
+yes / no questions
+unit tests for yes / no questions
+
+css
+favicon
+pylint
+coverage
+gunicorn
+facebook + twitter buttons
+
+css + html validation
+
+twitterbot
+
+adsense
+google analytics
