@@ -9,13 +9,16 @@ deploy to heroku
 yes / no questions
 unit tests for yes / no questions
 
+images
 css
 favicon
-pylint
-coverage
+
 gunicorn
+
 facebook + twitter buttons
 
+pylint
+coverage
 css + html validation
 
 twitterbot

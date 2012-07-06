@@ -10,6 +10,11 @@ def hello():
     #get the html content from a file
     #inject the answer into the html content
     #return it
+    #
+    #Or get fancy and have the client call ask() via a json api.
+    #Still allow the url get ('q?=') to be used (via pure client side code) so that
+    #hyperlinking to questions will work
+    #Hmm do we want to log all questions...
     return 'Hello World!'
 
 if __name__ == '__main__':
