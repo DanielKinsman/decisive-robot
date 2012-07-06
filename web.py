@@ -1,21 +1,18 @@
+#!/usr/bin/env python
+
 import os
 
 from flask import Flask
+from flask import render_template
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
-    #get question from url ('?q=this is a question')
-    #call decisiverobot.ask(question)
-    #get the html content from a file
-    #inject the answer into the html content
-    #return it
-    #
-    #Or get fancy and have the client call ask() via a json api.
-    #Still allow the url get ('q?=') to be used (via pure client side code) so that
-    #hyperlinking to questions will work
-    #Hmm do we want to log all questions...
-    return 'Hello World!'
+def index():
+    return render_template('index.html')
+    
+@app.route('/<requestedfile>')
+def serve(requestedfile):
+    return render_template(requestedfile)
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
