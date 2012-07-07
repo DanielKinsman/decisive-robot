@@ -11,7 +11,7 @@ REG_QUESTION = re.compile(r'\?')
 def answer(question):
     """Provides an answer to a question,
        using a randomly choosing between the different options."""
-    if type(question) is not str:
+    if not(type(question) is str or unicode):
         raise TypeError('question argument should be a string')
       
     matches = REG_OPTIONS.split(question)
@@ -21,7 +21,5 @@ def answer(question):
         candidate = candidate.strip()
         candidate = REG_QUESTION.sub('', candidate)
         choices.append(candidate)
-        
-    print(choices)
         
     return random.choice(choices)

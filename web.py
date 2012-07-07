@@ -1,14 +1,23 @@
 #!/usr/bin/env python
 
+import decisiverobot
 import os
-
 from flask import Flask
 from flask import render_template
+from flask import jsonify
+from flask import request
+
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     return render_template('index.html')
+    
+@app.route('/json/ask')
+def ask():
+    print(request.args['q'])
+    answer = decisiverobot.answer(request.args['q'])
+    return jsonify(answer=answer)
     
 @app.route('/<requestedfile>')
 def serve(requestedfile):
