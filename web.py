@@ -6,6 +6,7 @@ from flask import Flask
 from flask import render_template
 from flask import jsonify
 from flask import request
+import json
 
 app = Flask(__name__)
 
@@ -13,15 +14,20 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
     
-@app.route('/json/ask')
-def ask():
-    print(request.args['q'])
+@app.route('/service/', methods=['GET', 'POST'])
+def answer():
+    if request.method == 'POST':
+        question = json.loads(request.data)['params'][0]
+        answer = decisiverobot.answer(question)
+        return jsonify(result=answer)
+    
     answer = decisiverobot.answer(request.args['q'])
     return jsonify(answer=answer)
     
 @app.route('/<requestedfile>')
 def serve(requestedfile):
-    return render_template(requestedfile)
+    with file('templates/' + requestedfile) as f:
+        return f.read()
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.

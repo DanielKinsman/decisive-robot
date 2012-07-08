@@ -12,6 +12,8 @@ from pyjamas.ui.FormPanel import FormPanel
 from pyjamas.ui.TextBox import TextBox
 from pyjamas import Window
 import pyjamas.ui.KeyboardListener
+from pyjamas.JSONService import JSONProxy
+import pyjamas.HTTPRequest
 
 class IndexHtml(object):
     def onModuleLoad(self):
@@ -29,8 +31,11 @@ class IndexHtml(object):
         
         RootPanel().add(panel)
         
+        self.remote = DataService()
+        self.remote.handler = self
+        
     def ask(self):
-        Window.setLocation('index.html?q=' + self.tb.getText())
+        self.remote.sendRequest('answer', [self.tb.getText()], self)
         
     def onKeyDown(self, sender, keycode, modifiers):
         if(keycode == pyjamas.ui.KeyboardListener.KEY_ENTER):
@@ -41,7 +46,17 @@ class IndexHtml(object):
     
     def onKeyPress(self, sender, keycode, modifiers):
         pass
+    
+    def onRemoteResponse(self, response, request_info):
+        Window.alert("got a response:" + response)
+        
+    def onRemoteError(self, code, errobj, request_info):
+        Window.alert("got an error")
+
      
+class DataService(JSONProxy):
+    def __init__(self):
+        JSONProxy.__init__(self, 'service/', ['answer'])
     
 if __name__ == '__main__':
     pyjd.setup("index.html")
