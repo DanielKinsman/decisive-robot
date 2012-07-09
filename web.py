@@ -12,12 +12,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return serve('index.html')
     
 @app.route('/service/', methods=['GET', 'POST'])
 def answer():
     if request.method == 'POST':
-        question = json.loads(request.data)['params'][0]
+        data = json.loads(request.data)
+        #todo ensure data['method'] == 'answer'
+        question = data['params']['question']
         answer = decisiverobot.answer(question)
         return jsonify(result=answer)
     
@@ -26,7 +28,7 @@ def answer():
     
 @app.route('/<requestedfile>')
 def serve(requestedfile):
-    with file('templates/' + requestedfile) as f:
+    with file('static/' + requestedfile) as f:
         return f.read()
 
 if __name__ == '__main__':

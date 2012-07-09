@@ -10,17 +10,20 @@ from pyjamas.ui.VerticalPanel import VerticalPanel
 from pyjamas.ui.HorizontalPanel import HorizontalPanel
 from pyjamas.ui.FormPanel import FormPanel
 from pyjamas.ui.TextBox import TextBox
+from pyjamas.ui.HTML import HTML
 from pyjamas import Window
 import pyjamas.ui.KeyboardListener
+from pyjamas.ui.CSS import StyleSheetCssFile
 from pyjamas.JSONService import JSONProxy
-import pyjamas.HTTPRequest
 
 class IndexHtml(object):
     def onModuleLoad(self):
-        # Create a panel to hold all of the form widgets.
+        self.remote = DataService()
+        
+        StyleSheetCssFile('style.css')
+        
         panel = HorizontalPanel()
-
-        # Create a TextBox, giving it a name so that it will be submitted.
+        
         self.tb = TextBox()
         self.tb.setName("textBoxFormElement")
         self.tb.addKeyboardListener(self)
@@ -29,13 +32,13 @@ class IndexHtml(object):
         self.button = Button("ask", self.ask)
         panel.add(self.button)
         
+        self.answer = HTML(StyleName='answerstyle')
+        panel.add(self.answer)
+        
         RootPanel().add(panel)
         
-        self.remote = DataService()
-        self.remote.handler = self
-        
     def ask(self):
-        self.remote.sendRequest('answer', [self.tb.getText()], self)
+        self.remote.sendRequest('answer', {'question': self.tb.getText()}, self)
         
     def onKeyDown(self, sender, keycode, modifiers):
         if(keycode == pyjamas.ui.KeyboardListener.KEY_ENTER):
@@ -48,7 +51,9 @@ class IndexHtml(object):
         pass
     
     def onRemoteResponse(self, response, request_info):
-        Window.alert("got a response:" + response)
+        #good stuff in request_info.method, request_info.id
+        #Window.alert("got a response:" + response)
+        self.answer.setHTML('<blockquote>' + response + '</blockquote>')
         
     def onRemoteError(self, code, errobj, request_info):
         Window.alert("got an error")
@@ -56,7 +61,7 @@ class IndexHtml(object):
      
 class DataService(JSONProxy):
     def __init__(self):
-        JSONProxy.__init__(self, 'service/', ['answer'])
+        JSONProxy.__init__(self, 'service/')
     
 if __name__ == '__main__':
     pyjd.setup("index.html")

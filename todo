@@ -8,6 +8,8 @@ deploy to heroku
 
 yes / no questions
 unit tests for yes / no questions
+Handle questions with no options ("What should I do with my career?")
+unit tests for questions with no options
 
 images
 css
