@@ -1,6 +1,5 @@
 get flask web.py working
 unit tests for decisiverobot.py
-makefile for pyjsbuild
 virtualenv
 create production branch/tag add generated html to it
 test locally via foreman
