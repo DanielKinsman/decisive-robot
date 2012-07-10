@@ -1,0 +1,7 @@
+Decisive robot is a web application that makes your decisions for you when you are feeling indecisive.
+
+To build (using make) you must have pyjamas installed (for pyjsbuild). Note however that decisive robot does not currently work with the official releases of pyjamas, so you may have to use the latest pyjamas source instead. This can be found at https://github.com/pyjs/pyjs.
+
+Once built start web.py and open a browser to http://localhost:5000/
+
+Enjoy.
