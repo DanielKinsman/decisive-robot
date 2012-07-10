@@ -1,21 +1,24 @@
 #!/usr/bin/env python
 
+""" The webservice for decisive robot """
+
 import decisiverobot
 import os
 from flask import Flask
-from flask import render_template
 from flask import jsonify
 from flask import request
 import json
 
-app = Flask(__name__)
+APP = Flask(__name__)
 
-@app.route('/')
+@APP.route('/')
 def index():
-    return serve('index.html')
+    """ Serves the landing page """
+    return servestatic('index.html')
     
-@app.route('/service/', methods=['GET', 'POST'])
-def answer():
+@APP.route('/service/', methods=['GET', 'POST'])
+def service():
+    """ Json service to answer the user's questions """
     if request.method == 'POST':
         data = json.loads(request.data)
         #todo ensure data['method'] == 'answer'
@@ -23,15 +26,16 @@ def answer():
         answer = decisiverobot.answer(question)
         return jsonify(result=answer)
     
-    answer = decisiverobot.answer(request.args['q'])
+    answer = decisiverobot.answer(request.args['question'])
     return jsonify(answer=answer)
     
-@app.route('/<requestedfile>')
-def serve(requestedfile):
-    with file('static/' + requestedfile) as f:
-        return f.read()
+@APP.route('/<requestedfile>')
+def servestatic(requestedfile):
+    """ Serves static web content """
+    with file('static/' + requestedfile) as content:
+        return content.read()
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    PORT = int(os.environ.get('PORT', 5000))
+    APP.run(host='0.0.0.0', port=PORT)
