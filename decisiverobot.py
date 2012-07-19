@@ -5,8 +5,10 @@ import re
 import random
 
 #split on ',' 'OR', 'or', 'Or', 'oR'
-REG_OPTIONS = re.compile(r'\Wor\W|,', re.IGNORECASE)
+REG_OPTIONS = re.compile(r'\bor\b|,', re.IGNORECASE)
 REG_QUESTION = re.compile(r'\?')
+REG_REMOVE = re.compile(r'\b(which|what|when|where|how|should|i|we)\b', \
+                        re.IGNORECASE)
 
 def answer(question):
     """Provides an answer to a question,
@@ -14,6 +16,7 @@ def answer(question):
     if not(type(question) is str or unicode):
         raise TypeError('question argument should be a string')
       
+    question = REG_REMOVE.sub('', question)
     matches = REG_OPTIONS.split(question)
     choices = list()
     
