@@ -10,6 +10,7 @@ from flask import request
 import json
 
 APP = Flask(__name__)
+staticcache = dict()
 
 @APP.route('/')
 def index():
@@ -32,8 +33,11 @@ def service():
 @APP.route('/<requestedfile>')
 def servestatic(requestedfile):
     """ Serves static web content """
-    with file('static/' + requestedfile) as content:
-        return content.read()
+    if requestedfile not in staticcache:
+        with file('static/' + requestedfile) as content:
+            staticcache[requestedfile] = content.read()
+        
+    return staticcache[requestedfile]
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
