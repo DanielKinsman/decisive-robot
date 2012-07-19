@@ -4,3 +4,4 @@ htmlcov
 cover
 pylint.html
 static
+venv
