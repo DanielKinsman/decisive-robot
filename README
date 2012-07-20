@@ -2,6 +2,8 @@ Decisive robot is a web application that makes your decisions for you when you a
 
 To build (using make) you must have pyjamas installed (for pyjsbuild). Note however that decisive robot does not currently work with the official releases of pyjamas, so you may have to use the latest pyjamas source instead. This can be found at https://github.com/pyjs/pyjs.
 
-Once built start web.py and open a browser to http://localhost:5000/
+To compress the generated javascript, install google's closure compiler somewhere, export COMPILER=/path/to/complier.jar, then run make compress.
+
+Once built start web.py (or use foreman start) and open a browser to http://localhost:5000/
 
 Enjoy.

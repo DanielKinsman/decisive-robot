@@ -4,8 +4,10 @@ UNITTEST_IGNORES := -d C0103 -d R0904
 PYJSBUILD_OPTIONS := --disable-print-statements --disable-bound-methods --disable-operator-funcs --disable-debug
 
 all: static/index.html static/style.css
+compress: static/index.html static/style.css
+	python pyjscompressor.py static
 static/index.html: index.py
-	pyjsbuild $(PYJSBUILD_OPTIONS) --output=static index.py 
+	pyjsbuild $(PYJSBUILD_OPTIONS) --output=static index.py
 static/style.css: style.css
 	cp -f style.css static/style.css
 pylint:
