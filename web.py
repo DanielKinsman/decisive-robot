@@ -10,7 +10,6 @@ from flask import request
 import json
 
 APP = Flask(__name__)
-staticcache = dict()
 
 @APP.route('/')
 def index():
@@ -33,11 +32,8 @@ def service():
 @APP.route('/<requestedfile>')
 def servestatic(requestedfile):
     """ Serves static web content """
-    if requestedfile not in staticcache:
-        with file('static/' + requestedfile) as content:
-            staticcache[requestedfile] = content.read()
-        
-    return staticcache[requestedfile]
+    with file('static/' + requestedfile) as content:
+        return content.read()
     
 @APP.route('/lib/<requestedfile>')
 def servestaticlib(requestedfile):
