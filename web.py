@@ -38,6 +38,11 @@ def servestatic(requestedfile):
             staticcache[requestedfile] = content.read()
         
     return staticcache[requestedfile]
+    
+@APP.route('/lib/<requestedfile>')
+def servestaticlib(requestedfile):
+    """ Serves static web content in the lib subdir """
+    return servestatic('/lib/' + requestedfile)
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.

@@ -1,7 +1,7 @@
 #can possibly get rid of some of these disables after installing pyjamas properly
 PYJS_IGNORES := -d C0103 -d F0401 -d E1101 -d W0613 -d R0903 -d R0201
 UNITTEST_IGNORES := -d C0103 -d R0904
-PYJSBUILD_OPTIONS := --disable-print-statements --disable-bound-methods --disable-operator-funcs --disable-debug
+PYJSBUILD_OPTIONS := --disable-print-statements --disable-bound-methods --disable-operator-funcs --enable-strict --disable-debug --dynamic-link
 
 all: static/index.html static/style.css
 compress: static/index.html static/style.css
