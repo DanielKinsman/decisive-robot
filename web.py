@@ -26,6 +26,7 @@ def service():
         answer = decisiverobot.answer(question)
         return jsonify(result=answer)
     
+    #assume method is GET
     answer = decisiverobot.answer(request.args['question'])
     return jsonify(answer=answer)
     

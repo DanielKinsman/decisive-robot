@@ -1,7 +1,7 @@
 jQuery(document).ready ->
     answer = () ->
         question = jQuery("#question").val()
-        alert(question)
+        jQuery.getJSON("/service/?question=#{question}", (data) -> alert(data['answer']))
         
     jQuery("#ask").click( (event) ->
         event.preventDefault()
