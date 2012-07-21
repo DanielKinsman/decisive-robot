@@ -1,6 +1,7 @@
 jQuery(document).ready ->
     answer = () ->
-        alert("do something here")
+        question = jQuery("#question").val()
+        alert(question)
         
     jQuery("#ask").click( (event) ->
         event.preventDefault()
