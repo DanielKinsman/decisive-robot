@@ -1,4 +1,16 @@
+@charset "UTF-8";
+
 body
 {
     
+}
+
+*#answer
+{
+    background-image: url(decisiverobot.svg);
+    background-repeat: no-repeat;
+    background-position: left top;
+
+    padding: 10px;
+    margin: 10px;
 }

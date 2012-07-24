@@ -30,16 +30,19 @@ def service():
     answer = decisiverobot.answer(request.args['question'])
     return jsonify(answer=answer)
     
+@APP.route('/<requestedfile>.css')
+def servestaticcss(requestedfile):
+    return servestatic(requestedfile + '.css'), 200, {'Content-Type': 'text/css; charset=utf-8'}
+    
+@APP.route('/<requestedfile>.svg')
+def servestaticsvg(requestedfile):
+    return servestatic(requestedfile + '.svg'), 200, {'Content-Type': 'image/svg+xml; charset=utf-8'}
+    
 @APP.route('/<requestedfile>')
 def servestatic(requestedfile):
     """ Serves static web content """
     with file('static/' + requestedfile) as content:
         return content.read()
-    
-@APP.route('/lib/<requestedfile>')
-def servestaticlib(requestedfile):
-    """ Serves static web content in the lib subdir """
-    return servestatic('/lib/' + requestedfile)
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.

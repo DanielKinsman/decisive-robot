@@ -1,6 +1,6 @@
 UNITTEST_IGNORES := -d C0103 -d R0904
 
-all: static/index.html static/style.css static/jquery.js static/script.js
+all: static/index.html static/style.css static/jquery.js static/script.js static/decisiverobot.svg
 static/index.html: index.html static
 	cp -f index.html static/index.html
 static/style.css: style.css static
@@ -9,6 +9,8 @@ static/jquery.js: jquery-1.7.2.min.js static
 	cp -f jquery-1.7.2.min.js static/jquery.js
 static/script.js: script.coffee static
 	coffee --compile --output static script.coffee
+static/decisiverobot.svg: static
+	cp -f decisiverobot.svg static/decisiverobot.svg
 static:
 	mkdir static
 pylint:
