@@ -7,6 +7,7 @@ import os
 from flask import Flask
 from flask import jsonify
 from flask import request
+from flask import render_template
 import json
 
 APP = Flask(__name__)
@@ -14,7 +15,13 @@ APP = Flask(__name__)
 @APP.route('/')
 def index():
     """ Serves the landing page """
-    return servestatic('index.html')
+    import pdb; pdb.set_trace()
+    if 'question' in request.args:
+        answer = decisiverobot.snarkyanswer(request.args['question'])
+    else:
+        answer = None
+
+    return render_template('index.html', answer=answer)
     
 @APP.route('/service/', methods=['GET', 'POST'])
 def service():
@@ -23,7 +30,7 @@ def service():
         data = json.loads(request.data)
         #todo ensure data['method'] == 'answer'
         question = data['params']['question']
-        answer = decisiverobot.answer(question)
+        answer = decisiverobot.snarkyanswer(question)
         return jsonify(result=answer)
     
     #assume method is GET

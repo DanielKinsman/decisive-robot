@@ -1,8 +1,6 @@
 UNITTEST_IGNORES := -d C0103 -d R0904
 
 all: static/index.html static/style.css static/jquery.js static/script.js static/decisiverobot.svg static/decisiverobot.png
-static/index.html: index.html static
-	cp -f index.html static/index.html
 static/style.css: style.css static
 	cp -f style.css static/style.css
 static/jquery.js: jquery-1.7.2.min.js static
