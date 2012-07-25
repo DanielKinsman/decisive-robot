@@ -33,4 +33,4 @@ def snarkyanswer(question):
        while talking in ALL CAPS and calling you MEATBAG"""
        
     vanilla = answer(question)
-    return vanilla.upper() + ", " + random.choice(['MEATBAG', 'MEATBAG', 'FLESH GOLEM', 'JUICE SACK'])
+    return vanilla.upper() + ", " + random.choice(['MEATBAG', 'MEATBAG', 'MEATBAG', 'MEATBAG', 'FLESH GOLEM', 'JUICE SACK'])
