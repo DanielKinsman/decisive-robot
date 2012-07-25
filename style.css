@@ -25,15 +25,29 @@ form
     font-weight: bold;
 }
 
-*#answer
+div.answer
 {
-    display: inline;
     vertical-align: top;
-    font-family: Lucidatypewriter, monospace
 }
 
 *#robot
 {
     width: 40%;
     float: left;
+    background: white;
+    padding: 5px;
+    margin: 0px 15px 0px 0px;
+}
+
+p.unanswered
+{
+    display: none
+}
+
+p.answered
+{
+    font-family: Lucidatypewriter, monospace;
+    color: white;
+    background: red;
+    padding: 10px;
 }

@@ -1,6 +1,7 @@
 jQuery(document).ready ->
     writeanswer = (ans) ->
         jQuery("#answer").html(ans)
+        jQuery("#answer").attr("class", "answered")
         
     answer = () ->
         question = jQuery("#question").val()
