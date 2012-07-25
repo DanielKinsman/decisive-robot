@@ -2,15 +2,36 @@
 
 body
 {
-    
+    max-width: 30em;
+    margin: auto auto;
+}
+
+form
+{
+    margin: 10px auto;
+    width: 100%;
+}
+
+*#question
+{
+    padding: 5px;
+    margin: 2px 0px;
+    width: 70%;
+}
+
+*#ask
+{
+    padding: 3px;
+    font-weight: bold;
 }
 
 *#answer
 {
-    background-image: url(decisiverobot.svg);
-    background-repeat: no-repeat;
-    background-position: left top;
+    display: inline;
+    vertical-align: top;
+}
 
-    padding: 10px;
-    margin: 10px;
+*#robot
+{
+    width: 40%;
 }
