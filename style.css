@@ -51,3 +51,16 @@ p.answered
     background: red;
     padding: 10px;
 }
+
+.footer
+{
+    padding: 1em;
+    font-size: x-small;
+    clear: both;
+}
+
+.twitbird
+{
+    max-width: 3em;
+    vertical-align: middle;
+}
