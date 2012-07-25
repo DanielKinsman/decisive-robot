@@ -11,7 +11,15 @@
             <button id="ask">?</button>
         </form>
         <img id="robot" src="decisiverobot.svg">
-        <div class="answer"><p id="answer" class="unanswered">ENABLE JAVASCRIPT, MEATBAG</p></div>
+        <div class="answer">
+
+        {% if answer %}
+        <p id="answer" class="answered">{{ answer }}</p>
+        {% else %}
+        <p id="answer" class="unanswered"></p>
+        {% endif %}
+
+        </div>
         <script src="jquery.js"></script>
         <script src="script.js"></script>
     </body>
