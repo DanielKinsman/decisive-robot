@@ -26,3 +26,11 @@ def answer(question):
         choices.append(candidate)
         
     return random.choice(choices)
+    
+def snarkyanswer(question):
+    """Provides an answer to a question,
+       using a randomly choosing between the different options,
+       while talking in ALL CAPS and calling you MEATBAG"""
+       
+    vanilla = answer(question)
+    return vanilla.upper() + ", " + random.choice(['MEATBAG', 'MEATBAG', 'FLESH GOLEM', 'JUICE SACK'])

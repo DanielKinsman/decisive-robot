@@ -27,7 +27,7 @@ def service():
         return jsonify(result=answer)
     
     #assume method is GET
-    answer = decisiverobot.answer(request.args['question'])
+    answer = decisiverobot.snarkyanswer(request.args['question'])
     return jsonify(answer=answer)
     
 @APP.route('/<requestedfile>.css')
