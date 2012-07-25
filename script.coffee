@@ -15,3 +15,7 @@ jQuery(document).ready ->
     #jQuery("#question").keydown( (event) ->
         #if event.which == 13
             #answer() )
+            
+    # if the browser doesn't support svg, use a png
+    if not document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1")
+        jQuery("#robot").attr("src", "decisiverobot.png")
