@@ -30,6 +30,12 @@
 
         <div class="footer">
             <p>Tweet your questions to <a href="https://twitter.com/home?status=@DecisiveRobot "><img class="twitbird" src="https://twitter.com/images/resources/twitter-bird-light-bgs.png">@DecisiveRobot</a></p>
+
+            {% if question %}
+            <p class="none"><a id="externallink" href="http://decisiverobot.com/?question={{ question }}">External link</a> to this question</p>
+            {% else %}
+            <p class="unanswered"><a id="externallink" href="">External link</a> to this question</p>
+            {% endif %}
         </div>
 
         <script src="jquery.js"></script>
