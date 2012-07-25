@@ -15,13 +15,14 @@ APP = Flask(__name__)
 @APP.route('/')
 def index():
     """ Serves the landing page """
-    import pdb; pdb.set_trace()
     if 'question' in request.args:
-        answer = decisiverobot.snarkyanswer(request.args['question'])
+        question = request.args['question']
+        answer = decisiverobot.snarkyanswer(question)
     else:
+        question = None
         answer = None
 
-    return render_template('index.html', answer=answer)
+    return render_template('index.html', question=question, answer=answer)
     
 @APP.route('/service/', methods=['GET', 'POST'])
 def service():

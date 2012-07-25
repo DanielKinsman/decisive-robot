@@ -7,7 +7,13 @@
     </head>
     <body>
         <form>
+            
+            {% if question %}
+            <input id="question" type="text" value="{{ question }}">
+            {% else %}
             <input id="question" type="text">
+            {% endif %}
+
             <button id="ask">?</button>
         </form>
         <img id="robot" src="decisiverobot.svg">
