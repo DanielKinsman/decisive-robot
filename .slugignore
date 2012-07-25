@@ -1,10 +1,7 @@
 decisiverobot.txt
-index.html
 jquery-1.7.2.min.js
 Makefile
-style.css
 testdecisiverobot.py
 todo
-decisiverobot.svg
-decisiverobot.png
-speechtick.svg
+README
+script.coffee
