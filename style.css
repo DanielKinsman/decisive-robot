@@ -51,6 +51,7 @@ p.answered
     background: red;
     padding: 10px;
     font-size: x-large;
+    margin: 10px 10px 0px 10px;
 }
 
 .footer
@@ -64,4 +65,9 @@ p.answered
 {
     max-width: 3em;
     vertical-align: middle;
+}
+
+*#speechtick
+{
+    max-width: 3em;
 }

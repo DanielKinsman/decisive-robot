@@ -22,8 +22,10 @@
 
         {% if answer %}
         <p id="answer" class="answered">{{ answer }}</p>
+        <img src="speechtick.svg" class="none" id="speechtick">
         {% else %}
         <p id="answer" class="unanswered"></p>
+        <img src="speechtick.svg" class="unanswered" id="speechtick">
         {% endif %}
 
         </div>
