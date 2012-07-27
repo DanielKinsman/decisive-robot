@@ -8,12 +8,14 @@ body
 
 form
 {
+    font-size: large;
     margin: 20px auto;
     width: 100%;
 }
 
 *#question
 {
+    font-size: inherit;
     padding: 5px;
     margin: 2px 0px;
     width: 70%;
@@ -23,6 +25,7 @@ form
 {
     padding: 3px;
     font-weight: bold;
+    font-size: inherit;
 }
 
 div.answer
