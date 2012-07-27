@@ -15,6 +15,7 @@ import re
 
 import decisiverobot
 
+# Get your keys from https://dev.twitter.com/apps/new
 CONSUMER_KEY = 'replacethis'
 CONSUMER_SECRET = 'replacethis'
 ACCESS_TOKEN = 'replacethis'

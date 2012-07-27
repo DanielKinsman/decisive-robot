@@ -2,6 +2,8 @@ Decisive robot is a web application that makes your decisions for you when you a
 
 To build (using make) you must have coffescript installed.
 
-Once built start web.py (or use foreman start) and open a browser to http://localhost:5000/
+Once built, run web.py (or use foreman start) and open a browser to http://localhost:5000/
+
+For the twitter bot, you'll need python twitter tools (sudo easy_install twitter).
 
 Enjoy.
