@@ -3,34 +3,35 @@
 """ Twitter bot for automatically replying to questions
     asked to @decisiverobot on twitter """
 
-# Stolen shamelessly from https://github.com/vivekhaldar/the_shrinkbot/blob/master/the_shrink.py
-# See http://blog.vivekhaldar.com/post/2830035130/how-to-write-a-twitter-bot-in-python
+# Stolen shamelessly from:
+# github.com/vivekhaldar/the_shrinkbot/blob/master/the_shrink.py
+# blog.vivekhaldar.com/post/2830035130/how-to-write-a-twitter-bot-in-python
 
-from twitter.api import Twitter, TwitterError
-from twitter.oauth import OAuth, write_token_file, read_token_file
-from twitter.oauth_dance import oauth_dance
+from twitter.api import Twitter
+from twitter.oauth import OAuth
 
-import os
 import time
-import sys
 import re
 
 import decisiverobot
 
-CONSUMER_KEY='replacethis'
-CONSUMER_SECRET='replacethis'
-ACCESS_TOKEN='replacethis'
-ACCESS_TOKEN_SECRET='replacethis'
+CONSUMER_KEY = 'replacethis'
+CONSUMER_SECRET = 'replacethis'
+ACCESS_TOKEN = 'replacethis'
+ACCESS_TOKEN_SECRET = 'replacethis'
 TWITTER_USER = "@replacethis"
+
 REG_REMOVE_USER = re.compile(r'^' + TWITTER_USER, re.IGNORECASE)
 SLEEP_INTERVAL = 30
 LAST_ID_FILE = 'twitterbot.lastid'
 
-if __name__ == '__main__':
+def run():
+    """ Runs the bot it a loop, checking for questions and replying """
+
     # We use two twitter clients, one to search, another to update. Just
     # easier that way...
     twitter = Twitter(domain='search.twitter.com')
-    twitter.uriparts=()
+    twitter.uriparts = ()
 
     last_id_replied = ''
     
@@ -48,7 +49,9 @@ if __name__ == '__main__':
         domain='api.twitter.com')
 
     while True:
-        results = twitter.search(q=TWITTER_USER, since_id=last_id_replied)['results']
+        results = twitter.search(
+            q=TWITTER_USER,
+            since_id=last_id_replied)['results']
 
         for result in results:
             # Remove our twitter name from the question.
@@ -73,3 +76,6 @@ if __name__ == '__main__':
                 print(ex)
 
         time.sleep(SLEEP_INTERVAL)
+
+if __name__ == '__main__':
+    run()

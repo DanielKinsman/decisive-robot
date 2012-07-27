@@ -40,11 +40,15 @@ def service():
     
 @APP.route('/<requestedfile>.css')
 def servestaticcss(requestedfile):
-    return servestatic(requestedfile + '.css'), 200, {'Content-Type': 'text/css; charset=utf-8'}
+    """ Serves static web content with the text/css mime type"""
+    return servestatic(requestedfile + '.css'), \
+            200, {'Content-Type': 'text/css; charset=utf-8'}
     
 @APP.route('/<requestedfile>.svg')
 def servestaticsvg(requestedfile):
-    return servestatic(requestedfile + '.svg'), 200, {'Content-Type': 'image/svg+xml; charset=utf-8'}
+    """ Serves static web content with the image/svg+xml mime type"""
+    return servestatic(requestedfile + '.svg'), \
+            200, {'Content-Type': 'image/svg+xml; charset=utf-8'}
     
 @APP.route('/<requestedfile>')
 def servestatic(requestedfile):

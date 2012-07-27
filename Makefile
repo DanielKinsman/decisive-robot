@@ -21,6 +21,7 @@ pylint:
 	pylint decisiverobot.py
 	pylint $(UNITTEST_IGNORES) testdecisiverobot.py
 	pylint web.py
+	pylint twitterbot.py
 clean:
 	rm -rf *.pyc
 	rm -rf static

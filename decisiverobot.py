@@ -10,6 +10,9 @@ REG_QUESTION = re.compile(r'\?')
 REG_REMOVE = re.compile(r'\b(which|what|when|where|how|should|i|we)\b', \
                         re.IGNORECASE)
 
+INSULTS = ['MEATBAG', 'MEATBAG', 'MEATBAG', 'MEATBAG', 'FLESH GOLEM',
+            'JUICE SACK', 'HUMAN']
+
 def answer(question):
     """Provides an answer to a question,
        using a randomly choosing between the different options."""
@@ -34,4 +37,4 @@ def snarkyanswer(question):
        while talking in ALL CAPS and calling you MEATBAG"""
        
     vanilla = answer(question)
-    return vanilla.upper() + ", " + random.choice(['MEATBAG', 'MEATBAG', 'MEATBAG', 'MEATBAG', 'FLESH GOLEM', 'JUICE SACK'])
+    return vanilla.upper() + ", " + random.choice(INSULTS)
