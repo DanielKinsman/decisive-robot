@@ -58,5 +58,13 @@ class TestDecisiveRobot(unittest.TestCase):
         answer = decisiverobot.answer(u'Should wesley eat tofu or tempeh?')
         self.assertEqual(answer, u'wesley eat tofu')
         
+    def testOrWithComma(self):
+        """ Ensures that having an 'or' next to a comma doesn't produce
+            empty options """
+        answer = decisiverobot.answer(u', or or or, tofu or, tempeh?')
+        self.assertEqual(answer, 'tofu')
+        answer = decisiverobot.answer(u', or or or, tofu or, tempeh?')
+        self.assertEqual(answer, 'tempeh')
+
 if __name__ == '__main__':
     unittest.main()

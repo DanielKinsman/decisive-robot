@@ -23,10 +23,11 @@ def answer(question):
     for candidate in matches:
         candidate = candidate.strip()
         candidate = REG_QUESTION.sub('', candidate)
-        choices.append(candidate)
-        
-    return random.choice(choices)
+        if len(candidate) > 0:
+            choices.append(candidate)
     
+    return random.choice(choices)
+
 def snarkyanswer(question):
     """Provides an answer to a question,
        using a randomly choosing between the different options,
