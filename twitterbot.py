@@ -64,7 +64,7 @@ if __name__ == '__main__':
             last_id_replied = question_id
             poster.statuses.update(status=msg)
             
-            print('Last id replied to = ', last_id_replied)
+            print('Last id replied to = ' + str(last_id_replied))
             
             try:
                 with file(LAST_ID_FILE, 'w') as writer:
