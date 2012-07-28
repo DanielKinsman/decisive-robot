@@ -22,7 +22,7 @@ ACCESS_TOKEN = 'replacethis'
 ACCESS_TOKEN_SECRET = 'replacethis'
 TWITTER_USER = "@replacethis"
 
-REG_REMOVE_USER = re.compile(r'^' + TWITTER_USER, re.IGNORECASE)
+REG_USER_BEGINNING = re.compile(r'^\.?' + TWITTER_USER, re.IGNORECASE)
 SLEEP_INTERVAL = 30
 LAST_ID_FILE = 'twitterbot.lastid'
 
@@ -35,7 +35,7 @@ def run():
     twitter.uriparts = ()
 
     last_id_replied = ''
-    
+
     try:
         with file(LAST_ID_FILE, 'r') as content:
             last_id_replied = content.read()
@@ -55,20 +55,23 @@ def run():
             since_id=last_id_replied)['results']
 
         for result in results:
+            last_id_replied = str(result['id'])
+            question = result['text']
+
+            # Only answer tweets with username at the beginning
+            if REG_USER_BEGINNING.match(question) is None:
+                continue
+
             # Remove our twitter name from the question.
-            question = REG_REMOVE_USER.sub('', result['text'])
+            question = REG_USER_BEGINNING.sub('', question)
             asker = result['from_user']
-            question_id = str(result['id'])
             print(" <<< " + asker + ": " + question)
 
             bot_response = decisiverobot.snarkyanswer(question)
             
             msg = '@{0} {1}'.format(asker, bot_response)
             print('====> Resp =' + msg)
-            last_id_replied = question_id
             poster.statuses.update(status=msg)
-            
-            print('Last id replied to = ' + str(last_id_replied))
             
             try:
                 with file(LAST_ID_FILE, 'w') as writer:
