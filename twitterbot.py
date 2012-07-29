@@ -12,6 +12,7 @@ from twitter.oauth import OAuth
 
 import time
 import re
+import traceback
 
 import decisiverobot
 
@@ -82,4 +83,10 @@ def run():
         time.sleep(SLEEP_INTERVAL)
 
 if __name__ == '__main__':
-    run()
+    while True:
+        try:
+            run()
+        except:
+            print(traceback.format_exc())
+
+        time.sleep(SLEEP_INTERVAL)
