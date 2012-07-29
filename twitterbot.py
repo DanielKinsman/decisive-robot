@@ -71,7 +71,7 @@ def run():
             
             msg = '@{0} {1}'.format(asker, bot_response)
             print('====> Resp =' + msg)
-            poster.statuses.update(status=msg)
+            poster.statuses.update(status=msg, in_reply_to_status_id=last_id_replied)
             
             try:
                 with file(LAST_ID_FILE, 'w') as writer:
