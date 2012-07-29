@@ -66,12 +66,12 @@ def run():
             # Remove our twitter name from the question.
             question = REG_USER_BEGINNING.sub('', question)
             asker = result['from_user']
-            print(" <<< " + asker + ": " + question)
+            print("<- {0} (@{1} {2})".format(question, asker, last_id_replied))
 
             bot_response = decisiverobot.snarkyanswer(question)
             
             msg = '@{0} {1}'.format(asker, bot_response)
-            print('====> Resp =' + msg)
+            print('-> ' + msg)
             poster.statuses.update(status=msg, in_reply_to_status_id=last_id_replied)
             
             try:
