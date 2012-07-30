@@ -21,3 +21,7 @@ jQuery(document).ready ->
     # if the browser doesn't support svg, use a png
     if not document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1")
         jQuery("#robot").attr("src", "decisiverobot.png")
+
+	#if the browser is IE, tell them it is shit
+	if jQuery.browser.msie
+		alert("Decisive Robot works best on decent browsers like Firefox and Chrome. Don't use Internet Explorer, meatbag.")
