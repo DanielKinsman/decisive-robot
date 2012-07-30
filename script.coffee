@@ -4,7 +4,7 @@ jQuery(document).ready ->
         jQuery("#answer").attr("class", "answered")
         jQuery(".unanswered").attr("class", "none")
         question = jQuery("#question").val()
-        jQuery("#externallink").attr("href", "http://decisiverobot.com/?question=#{question}")
+        jQuery("#externallink").attr("href", "/?question=#{question}")
         
     answer = () ->
         question = jQuery("#question").val()
