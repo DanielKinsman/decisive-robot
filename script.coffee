@@ -18,9 +18,10 @@ jQuery(document).ready ->
     #set focus to the question box
     jQuery("#question").focus()
             
-    # if the browser doesn't support svg, use a png
+    # if the browser doesn't support svg, replace svgs with pngs
     if not document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1")
         jQuery("#robot").attr("src", "decisiverobot.png")
+        jQuery("#speechtick").attr("src", "speechtick.png")
 
 	#if the browser is IE, tell them it is shit
 	if jQuery.browser.msie
