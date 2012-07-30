@@ -72,5 +72,6 @@ p.answered
 
 *#speechtick
 {
-    max-width: 3em;
+    max-width: 50px;
+	max-height: 20px;
 }
