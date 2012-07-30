@@ -1,6 +1,6 @@
 UNITTEST_IGNORES := -d C0103 -d R0904
 
-all: static/style.css static/jquery.js static/script.js static/decisiverobot.svg static/decisiverobot.png static/speechtick.svg static/speechtick.png static/robots.txt
+all: static/style.css static/jquery.js static/script.js static/decisiverobot.svg static/decisiverobot.png static/speechtick.svg static/speechtick.png static/robots.txt static/favicon.png
 static/style.css: style.css static
 	cp -f style.css static/style.css
 static/jquery.js: jquery-1.7.2.min.js static
@@ -17,6 +17,8 @@ static/speechtick.svg: speechtick.svg static
 	cp -f speechtick.svg static/speechtick.svg
 static/speechtick.png: speechtick.png static
 	cp -f speechtick.png static/speechtick.png
+static/favicon.png: favicon.png static
+	cp -f favicon.png static/favicon.png
 static:
 	mkdir static
 pylint:
