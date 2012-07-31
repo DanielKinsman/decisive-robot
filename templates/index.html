@@ -18,21 +18,21 @@
             <button id="ask">?</button>
         </form>
 
-        <img id="robot" src="decisiverobot.svg">
+        <img id="robot" src="decisiverobot.svg" alt="a decisive looking robot">
         <div class="answer">
 
         {% if answer %}
         <p id="answer" class="answered">{{ answer }}</p>
-        <img src="speechtick.svg" class="none" id="speechtick">
+        <img src="speechtick.svg" class="none" id="speechtick" alt="speech bubble">
         {% else %}
         <p id="answer" class="unanswered"></p>
-        <img src="speechtick.svg" class="unanswered" id="speechtick">
+        <img src="speechtick.svg" class="unanswered" id="speechtick" alt="speech bubble">
         {% endif %}
 
         </div>
 
         <div class="footer">
-            <p>Tweet your questions to <a href="https://twitter.com/DecisiveRobot"><img class="twitbird" src="https://twitter.com/images/resources/twitter-bird-light-bgs.png">@DecisiveRobot</a></p>
+            <p>Tweet your questions to <a href="https://twitter.com/DecisiveRobot"><img class="twitbird" src="https://twitter.com/images/resources/twitter-bird-light-bgs.png" alt="twitter logo">@DecisiveRobot</a></p>
 
             {% if question %}
             <p><a href="/about.html">about</a><span class="none"> | <a id="externallink" href="/?question={{ question }}">link</a> to this question</span></p>
