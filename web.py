@@ -9,6 +9,7 @@ from flask import jsonify
 from flask import request
 from flask import render_template
 import json
+import urllib
 
 APP = Flask(__name__)
 
@@ -17,12 +18,14 @@ def index():
     """ Serves the landing page """
     if 'question' in request.args:
         question = request.args['question']
+        questionurl = "/?question=" + urllib.quote(question)
         answer = decisiverobot.snarkyanswer(question)
     else:
         question = None
+        questionurl = None
         answer = None
 
-    return render_template('index.html', question=question, answer=answer)
+    return render_template('index.html', question=question, questionurl=questionurl, answer=answer)
     
 @APP.route('/service/', methods=['GET', 'POST'])
 def service():

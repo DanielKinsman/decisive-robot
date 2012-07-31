@@ -34,8 +34,8 @@
         <div class="footer">
             <p>Tweet your questions to <a href="https://twitter.com/DecisiveRobot"><img class="twitbird" src="https://twitter.com/images/resources/twitter-bird-light-bgs.png" alt="twitter logo">@DecisiveRobot</a></p>
 
-            {% if question %}
-            <p><a href="/about.html">about</a><span class="none"> | <a id="externallink" href="/?question={{ question }}">link</a> to this question</span></p>
+            {% if questionurl %}
+            <p><a href="/about.html">about</a><span class="none"> | <a id="externallink" href="{{ questionurl }}">link</a> to this question</span></p>
             {% else %}
             <p><a href="/about.html">about</a><span class="unanswered"> | <a id="externallink" href="">link</a> to this question</span></p>
             {% endif %}
