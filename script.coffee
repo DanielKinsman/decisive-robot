@@ -4,7 +4,8 @@ jQuery(document).ready ->
         jQuery("#answer").attr("class", "answered")
         jQuery(".unanswered").attr("class", "none")
         question = jQuery("#question").val()
-        jQuery("#externallink").attr("href", "/?question=#{question}")
+        questionurl = "/?question=" + encodeURIComponent("#{question}")
+        jQuery("#externallink").attr("href", questionurl)
         
     answer = () ->
         question = jQuery("#question").val()
