@@ -42,7 +42,8 @@ def index():
         questionurl = None
         answer = None
 
-    return render_template('index.html', question=question, questionurl=questionurl, answer=answer)
+    return render_template('index.html', question=question,
+        questionurl=questionurl, answer=answer)
     
 @APP.route('/service/', methods=['GET', 'POST'])
 def service():
