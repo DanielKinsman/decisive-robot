@@ -1,5 +1,7 @@
 Decisive robot is a web application that makes your decisions for you when you are feeling indecisive.
 
+Copyright 2012 Daniel Kinsman.
+
 To build (using make) you must have coffescript installed.
 
 Once built, run web.py (or use foreman start) and open a browser to http://localhost:5000/

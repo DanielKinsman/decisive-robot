@@ -6,6 +6,7 @@
 # Stolen shamelessly from:
 # github.com/vivekhaldar/the_shrinkbot/blob/master/the_shrink.py
 # blog.vivekhaldar.com/post/2830035130/how-to-write-a-twitter-bot-in-python
+# Modified by Daniel Kinsman 2012, all modifications placed into public domain
 
 from twitter.api import Twitter
 from twitter.oauth import OAuth
