@@ -21,7 +21,6 @@
 import re
 import random
 
-#split on ',' 'OR', 'or', 'Or', 'oR'
 REG_OPTIONS = re.compile(r'\bor\b|,', re.IGNORECASE)
 REG_QUESTION = re.compile(r'\?')
 REG_REMOVE = re.compile(r'\b(which|what|when|where|how|should|i|we)\b', \
@@ -32,26 +31,32 @@ INSULTS = ['MEATBAG', 'MEATBAG', 'MEATBAG', 'MEATBAG', 'FLESH GOLEM',
 
 def answer(question):
     """Provides an answer to a question,
-       using a randomly choosing between the different options."""
+       randomly choosing between the different options."""
     if not(type(question) is str or unicode):
         raise TypeError('question argument should be a string')
       
+    #remove "Should I" etc
     question = REG_REMOVE.sub('', question)
+
+    #split on ',' 'OR', 'or', 'Or', 'oR'
     matches = REG_OPTIONS.split(question)
     choices = list()
-    
+
     for candidate in matches:
+        # remove question marks and leading/trailing whitespace
         candidate = candidate.strip()
         candidate = REG_QUESTION.sub('', candidate)
+
+        # Strings like 'or,' or ',,,' will produce empty candidates.
         if len(candidate) > 0:
             choices.append(candidate)
-    
+
     return random.choice(choices)
 
 def snarkyanswer(question):
     """Provides an answer to a question,
        using a randomly choosing between the different options,
        while talking in ALL CAPS and calling you MEATBAG"""
-       
+
     vanilla = answer(question)
     return vanilla.upper() + ", " + random.choice(INSULTS)

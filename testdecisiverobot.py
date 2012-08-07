@@ -27,6 +27,7 @@ class TestDecisiveRobot(unittest.TestCase):
     """ Unit tests for DecisiveRobot class """
     
     def setUp(self):
+        # Use a known seed for the rng so that behaviour is deterministic
         random.seed(1)
         
     def testUnicode(self):

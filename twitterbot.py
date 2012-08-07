@@ -38,6 +38,8 @@ def run():
 
     last_id_replied = ''
 
+    # Fetch the last message replied to from disk to
+    # ensure we don't answer the same question twice.
     try:
         with file(LAST_ID_FILE, 'r') as content:
             last_id_replied = content.read()
@@ -69,13 +71,18 @@ def run():
             asker = result['from_user']
             print("<- {0} (@{1} {2})".format(question, asker, last_id_replied))
 
+            # Get the answer from the bot
             bot_response = decisiverobot.snarkyanswer(question)
-            
+
+            # Add the twitter @address of the asker
             msg = '@{0} {1}'.format(asker, bot_response)
             print('-> ' + msg)
+
+            #post reply to twitter
             poster.statuses.update(status=msg,
                 in_reply_to_status_id=last_id_replied)
-            
+
+            # Write the last message replied to to disk
             try:
                 with file(LAST_ID_FILE, 'w') as writer:
                     writer.write(last_id_replied)
@@ -85,6 +92,8 @@ def run():
         time.sleep(SLEEP_INTERVAL)
 
 if __name__ == '__main__':
+    # Twitter outages cause exceptions, make sure we recover.
+    # todo: get rid of the pokemon exception handling
     while True:
         try:
             run()

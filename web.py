@@ -44,7 +44,7 @@ def index():
 
     return render_template('index.html', question=question,
         questionurl=questionurl, answer=answer)
-    
+
 @APP.route('/service/', methods=['GET', 'POST'])
 def service():
     """ Json service to answer the user's questions """
@@ -54,26 +54,28 @@ def service():
         question = data['params']['question']
         answer = decisiverobot.snarkyanswer(question)
         return jsonify(result=answer)
-    
+
     #assume method is GET
     answer = decisiverobot.snarkyanswer(request.args['question'])
     return jsonify(answer=answer)
-    
+
 @APP.route('/<requestedfile>.css')
 def servestaticcss(requestedfile):
     """ Serves static web content with the text/css mime type"""
     return servestatic(requestedfile + '.css'), \
             200, {'Content-Type': 'text/css; charset=utf-8'}
-    
+
 @APP.route('/<requestedfile>.svg')
 def servestaticsvg(requestedfile):
     """ Serves static web content with the image/svg+xml mime type"""
     return servestatic(requestedfile + '.svg'), \
             200, {'Content-Type': 'image/svg+xml; charset=utf-8'}
-    
+
 @APP.route('/<requestedfile>')
 def servestatic(requestedfile):
     """ Serves static web content """
+    # Should really use aws s3 to serve static content, but
+    # this is good enough for the low traffic expected now.
     with file('static/' + requestedfile) as content:
         return content.read()
 
