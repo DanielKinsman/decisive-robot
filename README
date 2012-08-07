@@ -1,11 +1,21 @@
-Decisive robot is a web application that makes your decisions for you when you are feeling indecisive.
+Decisive robot is a web application that chooses for you when you are feeling indecisive.
+See http://decisiverobot.com/ and http://twitter.com/decisiverobot
 
 Copyright 2012 Daniel Kinsman.
 
-To build (using make) you must have coffescript installed.
+To build use GNU Make (http://www.gnu.org/software/make/).
 
-Once built, run web.py (or use foreman start) and open a browser to http://localhost:5000/
+Other prerequisites needed include:
+-python 2.7
+-flask (http://flask.pocoo.org/)
+-coffeescript (http://coffeescript.org/)
+-python twitter tools (http://mike.verdone.ca/twitter/)
 
-For the twitter bot, you'll need python twitter tools (sudo easy_install twitter).
+Useful but not required:
+-foreman (http://blog.daviddollar.org/2011/05/06/introducing-foreman.html)
+-gunicorn (http://gunicorn.org/)
+
+Once built, run web.py (or use foreman start) and open http://localhost:5000/ in a browser.
+You can also run the twitter bot via twitterbot.py (after changing the "replacethis" constants in that file).
 
 Enjoy.
